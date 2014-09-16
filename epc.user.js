@@ -165,10 +165,10 @@ function main(){
 }
 
 $(document).bind('next',function(){
-	var d = new Date('2013-10-21 00:00:01').getTime();
+	var d = new Date(localStorage['firstWeek']).getTime();
 	var cd = new Date().getTime();
-	var cweek = Math.floor(8 + (cd-d)/3600000/24/7);
-	var cday = new Date(cd+3600000*24).getDay()+1;//从第二天开始刷课
+	var cweek = Math.floor(1 + (cd-d)/3600000/24/7);
+	var cday = new Date().getDay()+1;//从第二天开始刷课
 	var week = location.href.match(/week=(\d+)/);
 	var day = location.href.match(/week_day=(\d+)/);
 	var url = location.href;

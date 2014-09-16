@@ -35,7 +35,9 @@ for(var i in timeSeg){
 	}
 	html += '</ul></li>';
 }
-html += '<li><h3>Start and End week</h3><input id="start-week" type="number" value="'+localStorage['startWeek']+'"><input id="end-week" type="number" value="'+localStorage['endWeek']+'"></li>';
+html += '<li><h3>Start and End week</h3>'
+	 + 'one day of first week<input id="first-week" type="date" value="' +localStorage['firstWeek'] + '">'
+	 + 'from week<input id="start-week" type="number" value="'+localStorage['startWeek']+'"> to week<input id="end-week" type="number" value="'+localStorage['endWeek']+'"></li>';
 html += '<li><input id="save" type="button" value="Save"></li>';
 html += '</ul>';
 rootNode.html(html);
@@ -43,6 +45,7 @@ $('#save').click(function(e){
 	var dateTime=[];
 	localStorage['username']=$('#username').val();
 	localStorage['pw']=$('#pw').val();
+	localStorage['firstWeek']=$('#first-week').val();
 	localStorage['startWeek']=$('#start-week').val();
 	localStorage['endWeek']=$('#end-week').val();
 	$('#time').children('li.adaytime').each(function(){
