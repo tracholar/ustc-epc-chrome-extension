@@ -1,4 +1,4 @@
-// ==UserScript==  
+﻿// ==UserScript==  
 // @name         epc
 // @version              1.0
 // @author       zuoyuan@mail.ustc.edu.cn
@@ -122,7 +122,7 @@ function main(){
 				if(url.indexOf('page=')==-1){
 					url += '&page=1';
 				}
-				location.href = url.replace(/week=\d+/,'week='+c.startWeek).replace(/page=\d+/,'page=1');
+				location.href = url.replace(/week=\d+/,'week='+c.startWeek).replace(/week_day=\d/,'week_day=1').replace(/page=\d+/,'page=1').replace(/\&isall.+/,'');
 			}
 			count++;
 			continue;
@@ -186,19 +186,11 @@ $(document).bind('next',function(){
 		page=['page=1',1];
 	}
 	var T = 5000;
-	//$.get('http://127.0.0.1/epc/?log='+encodeURIComponent(location.href));
-	if(parseInt(page[1])>=parseInt(allPage)){
-		url = location.href.replace(/week=\d+/,'week='+cweek).replace(/week_day=\d+/,'week_day='+cday)
-			.replace(/page=\d+/,'page=1');
+	url = 'http://epc.ustc.edu.cn/' + $('a[title="下一页"]').attr('href').trim();
 		setTimeout(function(){
 			location.href=url;
 		},T);
-		
-	}else{
-		setTimeout(function(){
-			location.href=url.replace(page[0],'page='+(parseInt(page[1])+1));
-		},T);
-	}
+	
 });
 
 
